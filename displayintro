@@ -1,0 +1,28 @@
+def display_intro():
+  print("*" * 24)
+  print("** A Simple Math Quiz **")
+  print("*" * 24)
+
+
+
+
+
+
+def main():
+         display_intro()
+         display_menu()
+         display_separator()
+         
+         option = get_user_input()
+         total = 0
+         correct = 0
+         while option != 5:
+             total = total + 1
+             correct = menu_option(option, correct)
+             option = get_user_input()
+             
+         print("Exit the quiz.")
+         display_separator()
+         display_result(total, correct)
+         
+main()
