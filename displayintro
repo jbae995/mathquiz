@@ -3,18 +3,20 @@ def display_intro():
     print("** A Simple Math Quiz **")
     print("*" * 24)
 
+def display_intro():
+    print("*" * 24)
+    print("** A Simple Math Quiz **")
+    print("*" * 24)
+
 def display_menu():
-    print(“1. Addition”)
-    print(“2. Subtraction”)
-    print(“3. Multiplication”)
-    print(“4. Integer Division”)
-    print(“5. Exit\n”)
-    print(“-“*24)
-    print(“\n”)
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Integer Division")
+    print("5. Exit")
 
 def display_separator():
-    print(“-”*24)
-    print(“\n”)
+    print("-"*24)
 
 def get_user_input():
     choice = input(“Enter your choice: “))
