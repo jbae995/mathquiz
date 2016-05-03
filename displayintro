@@ -1,7 +1,10 @@
-def display_intro():
-    print("*" * 24)
-    print("** A Simple Math Quiz **")
-    print("*" * 24)
+
+"""
+This program executes a Simple Math Quiz. the quiz consists of four types of questions: Addition, Subtraction, Integer division and multiplication.
+The player is able to choose which type of question they would like to answer and is able to exit out of the quiz at any time, during the quiz.
+"""
+
+import random
 
 def display_intro():
     print("*" * 24)
@@ -19,34 +22,79 @@ def display_separator():
     print("-"*24)
 
 def get_user_input():
-    choice = input(“Enter your choice: “))
-    print(choice)
-    if choice < 1: 
-        print(“Invalid menu option.“) 
- 
+    index = int(input("Enter your choice: "))
+    while index < 1 or index > 5:
+        print(int(input("Invalid menu option.\nPlease try again: ")))
     
+    return index
+    
+def get_user_solution(problem):
+    problem = input("Enter your answer\n")
+    return problem
 
+def check_solution(user_solution, solution, count):
+    if user_solution == solution:
+        print("correct")
+        count += 1
+    elif user_solution != solution:
+        print("incorrect")
+    return count
 
+def menu_option(index, count):
+    random1 = random.randrange(1, 21)
+    random2 = random.randrange(1, 21)
+    operator = ""
+    
+    if index == 1:
+        operator = "+"
+        solution = random1 + random2 
+        print(random1, operator, random2, "=")
+        
+    elif index == 2:
+        operator = "-"
+        solution = random1 - random2
+        print(random1, operator, random2, "=")
+        
+    elif index == 3:
+         operator = "//"
+         solution = random1 // random2
+         print(random1, operator, random2, "=")
+     
+    elif index == 4:
+        operator = "*"
+        solution = random1 * random2
+        print(random1, operator, random2, "=")
 
-
-
-
-
+    user_solution = int(get_user_solution(solution))
+    count = check_solution(user_solution, solution, count)
+    return count 
+        
+def display_result(total, correct):
+    print("You answered", total, "questions with", correct, "correct.\nYour score is", ((correct/total)*100), "%. Thank you.")
+    
 def main():
-         display_intro()
-         display_menu()
-         display_separator()
+    display_intro()
+    display_menu()
+    display_separator()
          
-         option = get_user_input()
-         total = 0
-         correct = 0
-         while option != 5:
-             total = total + 1
-             correct = menu_option(option, correct)
-             option = get_user_input()
-             
-         print("Exit the quiz.")
-         display_separator()
-         display_result(total, correct)
-         
+    option = get_user_input()
+    total = 0
+    correct = 0
+    while option != 5:
+        total = total + 1
+        correct = menu_option(option, correct)
+        option = get_user_input()
+        
+    print("Exit the quiz.")
+    display_separator()
+    display_result(total, correct)
+
 main()
+
+
+
+
+
+
+
+
